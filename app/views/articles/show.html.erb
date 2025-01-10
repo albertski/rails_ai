@@ -7,11 +7,24 @@
     Tags: <%= @article.tag_list.join(", ") %>
   </p>
 
+  <div class="border border-slate-300 my-2 p-4">
+    <h2 class="text-3xl font-bold mb-4">Related Articles</h2>
+    <ul class="mt-4">
+      <% @article.related.each do |related_article| %>
+        <li class="border-b p-4">
+          <h2 class="text-xl font-bold"><%= link_to related_article.title, article_path(related_article) %></h2>
+          <p class="text-gray-600"><%= truncate(related_article.body, length: 100) %></p>
+          <p class="text-sm text-blue-500">
+            Tags: <%= related_article.tag_list.join(", ") %>
+          </p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
   <div class="flex space-x-4">
     <%= link_to "Edit", edit_article_path(@article), class: "bg-yellow-500 text-white p-2 rounded" %>
-
     <%= button_to "Delete", @article, method: :delete, data: { confirm: "Are you sure you want to delete this article?" }, class: "bg-red-500 text-white p-2 rounded" %>
-
     <%= link_to "Back to Articles", articles_path, class: "bg-gray-500 text-white p-2 rounded" %>
   </div>
 </div>

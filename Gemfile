@@ -27,6 +27,8 @@ gem "jbuilder"
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
+gem "ruby-openai"
+
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
 gem "solid_cache"
 gem "solid_queue"
@@ -50,7 +52,7 @@ group :development, :test do
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
-  gem "faker"
+  gem "ffaker"
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
@@ -59,6 +61,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "pry-rails"
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 end
