@@ -1,0 +1,14 @@
+<h1 class="text-2xl font-bold mb-4">Articles</h1>
+<%= link_to "New Article", new_article_path, class: "bg-green-500 text-white p-2 rounded" %>
+
+<ul class="mt-4">
+  <% @articles.each do |article| %>
+    <li class="border-b p-4">
+      <h2 class="text-xl font-bold"><%= link_to article.title, article_path(article) %></h2>
+      <p class="text-gray-600"><%= truncate(article.body, length: 100) %></p>
+      <p class="text-sm text-blue-500">
+        Tags: <%= article.tag_list.join(", ") %>
+      </p>
+    </li>
+  <% end %>
+</ul>

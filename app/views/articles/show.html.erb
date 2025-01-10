@@ -1,0 +1,17 @@
+<div>
+  <h1 class="text-3xl font-bold mb-4"><%= @article.title %></h1>
+
+  <p class="text-gray-600 mb-4"><%= @article.body %></p>
+
+  <p class="text-sm text-blue-500 mb-4">
+    Tags: <%= @article.tag_list.join(", ") %>
+  </p>
+
+  <div class="flex space-x-4">
+    <%= link_to "Edit", edit_article_path(@article), class: "bg-yellow-500 text-white p-2 rounded" %>
+
+    <%= button_to "Delete", @article, method: :delete, data: { confirm: "Are you sure you want to delete this article?" }, class: "bg-red-500 text-white p-2 rounded" %>
+
+    <%= link_to "Back to Articles", articles_path, class: "bg-gray-500 text-white p-2 rounded" %>
+  </div>
+</div>

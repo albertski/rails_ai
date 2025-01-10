@@ -1,0 +1,17 @@
+<%= form_with model: article, local: false do |form| %>
+  <div>
+    <%= form.label :title, "Title" %>
+    <%= form.text_field :title, class: "border p-2 w-full" %>
+  </div>
+  <div>
+    <%= form.label :body, "Body" %>
+    <%= form.text_area :body, class: "border p-2 w-full" %>
+  </div>
+  <div>
+    <%= form.label :tag_list, "Tags (comma separated)" %>
+    <%= form.text_field :tag_list, class: "border p-2 w-full" %>
+  </div>
+  <div>
+    <%= form.submit "Save", class: "bg-blue-500 text-white p-2 rounded" %>
+  </div>
+<% end %>
