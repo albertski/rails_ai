@@ -1,24 +1,42 @@
-# README
+# Rails AI
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple proof of concept demonstrating how to use Rails with Ollama LLM (locally) to generate related articles.
 
-Things you may want to cover:
+# How it works
 
-* Ruby version
+1. **Generate Vector Embeddings:**
+  An article's title, tags, and body are used to create a vector embedding.
 
-* System dependencies
+2. **Find Related Articles:**
+  The vector embedding is compared to other article embeddings, and the closest vectors determine related articles.
 
-* Configuration
+# Requirements
 
-* Database creation
+- [pgvector](https://github.com/pgvector/pgvector#installation): For storing and querying vector embeddings in PostgreSQL
+- [Ollama](https://ollama.com/): A locally hosted large language model (LLM)
 
-* Database initialization
+# Setup
 
-* How to run the test suite
+## Install and run Ollama Server
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+brew install ollama
+ollama serve
+ollama pull llama3:latest
+```
 
-* Deployment instructions
+## Seed data
+Run the following command to populate your database with example data:
+```
+rails db:seed
+```
 
-* ...
+## Generate Embeddings
+Generate vector embeddings for all articles:
+```
+Article.all.each {|article| article.generate_embedding! }
+```
+
+# Notes
+- Ensure pgvector is installed and configured in your PostgreSQL instance before running the application.
+- For more information on how Ollama works or to troubleshoot installation issues, refer to the [Ollama documentation](https://ollama.com/).
